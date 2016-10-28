@@ -1,0 +1,15 @@
+.vendor-home-review{border-bottom: 1px solid #efefef; margin-bottom: 40px; padding-bottom: 40px;}
+.vendor-home-review .vendor-average-review{margin-bottom: 50px;}
+
+.vendor-review-detail .review-detail{margin-top: 20px;padding-bottom: 10px;}
+.vendor-review-avatar{display: inline-block; width: 48px; height: 48px; vertical-align: top;margin-right: 10px; }
+.vendor-review-avatar img{border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; overflow:hidden; background: #F0F0F0;}
+.vendor-review-detail{display: inline-block;width: calc(100% - 70px); border-bottom: 1px solid #efefef;}
+.vendor-review-detail .review-title{margin: 0; font-size: 1.8rem; font-weight: 600;}
+.vendor-review-detail .customer-info{padding-bottom: 30px;margin-top: 10px;}
+.vendor-home-review .view-all-items{text-align: center;}
+.vendor-home-review .limiter{display: block;}
+.vendor-reviews-page .vendor-review, .vendor-home-review .vendor-review{margin-bottom: 30px;}
+
+.vendor-review-item a{display: table-cell; vertical-align: middle;}
+.vendor-review-item .product-item-photo img{border: 1px solid #d3d3d3; width: 100px; height: 80px; display: inline-block; margin-right: 10px;}

@@ -1,0 +1,40 @@
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Vnecoms\VendorsReview\Block\Profile\Review
+ */
+?>
+<div class="product-reviews-summary short">
+    <div class="rating-summary">
+        <span class="label"><span><?php echo __("Rating:")?></span></span>
+        <div title="<?php echo $block->getRating()?>%" class="rating-result">
+            <span style="width:<?php echo $block->getRating()?>%"><span><?php echo $block->getRating()?>%</span></span>
+        </div>
+    </div>
+    <div class="reviews-actions">
+        <a href="<?php echo $this->getReviewLink()?>" class="action view"><?php echo __("%1 Reviews",$block->getReviewCount())?></a>
+    </div>
+    <?php if($this->isHomePage()):?>
+    <script type="text/javascript">
+
+    require([
+         'jquery',
+         'domReady!'
+    ], function($){
+    	$('.vendor-profile-review .reviews-actions a').each(function(index,elm){
+    		var destimation = $($(elm).attr('href'));
+    		if(destimation.length) menuElements.push({source: $(elm), destimation: destimation});
+    		$(elm).click(function(event){
+    			event.preventDefault();
+    			var element = $(this);
+    			var destimation = $(element.attr('href'));
+    			if(destimation.length) $('body,html').animate({
+    			    scrollTop: destimation.offset().top - 70
+    			}, 600);
+    		});
+    	});
+    });
+	</script>
+    <?php endif;?>
+</div>

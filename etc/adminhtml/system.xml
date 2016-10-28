@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="vendors">
+            <group id="vendorsreview" translate="label tooltip" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            	<label>Vendor Reviews</label>
+            	<field id="review_approval" translate="label tooltip" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>New Review Approval</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If this option is set to "Yes", All review will need to be approved by admin to be displayed on frontend.</tooltip>
+                </field>
+				<field id="home_review_num" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Number of Reviews on Vendor's Home Page.</label>
+                    <frontend_class>validate-number</frontend_class>
+                    <comment>Leave 0 or blank to show all reviews.</comment>
+                </field>
+
+				<field id="new_review_notification_customer" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New review notification (Customer)</label>
+                    <source_model>Vnecoms\Vendors\Model\Config\Source\Email\Template</source_model>
+                    <tooltip>This email is sent to customer when he leave a new review for a seller.</tooltip>
+                </field>
+                <field id="new_review_notification_vendor" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New review notification (Seller)</label>
+                    <source_model>Vnecoms\Vendors\Model\Config\Source\Email\Template</source_model>
+                    <tooltip>This email is sent to seller when admin approved a new review.</tooltip>
+                </field>
+                <field id="sender_email_identity" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,16 @@
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Vnecoms\VendorsReview\Block\Customer\Account\Notification
+ */
+?>
+<div class="page messages">
+    <div class="messages">
+        <?php foreach($block->getReviewLinksCollection() as $_link):?>
+        <div class="message-success success message" data-ui-id="message-success">
+            <div><?php echo __('Thank you for your purchasing the product <strong>%1</strong>. <a href="%2">Click here</a> to leave a review for the seller',$_link->getOrderItem()->getName(),$block->getReviewLinkUrl($_link->getVendorId(), $_link->getOrderItemId()))?></div>
+        </div>
+        <?php endforeach;?>
+    </div>
+</div>

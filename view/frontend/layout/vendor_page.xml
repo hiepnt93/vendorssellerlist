@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Vnecoms_VendorsReview::css/styles.css"/>
+	</head>
+    <body>
+        <referenceContainer name="vendor.profile.left.description.container">
+    		<container name="vendor.profile.left.review.container" htmlTag="div" htmlClass="col-xs-12 vendor-profile-review" after="vendor.profile.left.social.container">
+    			<block class="Vnecoms\VendorsReview\Block\Profile\Review" name="vendor.profile.left.sales" template="Vnecoms_VendorsReview::profile/reviews.phtml" />
+    		</container>
+    	</referenceContainer>
+    </body>
+</page>

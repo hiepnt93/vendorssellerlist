@@ -1,0 +1,62 @@
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Vnecoms\VendorsReview\Block\Home\Review
+ */
+?>
+<h3 id="vendor-reviews" class="vendor-about-title"><?php echo __("Reviews")?></h3>
+<div class="product-reviews-summary vendor-average-review">
+    <?php echo __("Average review")?>
+    <div class="rating-summary">
+        <span class="label"><span><?php echo __("Rating:")?></span></span>
+        <div title="<?php echo $block->getRating()?>%" class="rating-result">
+            <span style="width:<?php echo $block->getRating()?>%"><span><?php echo $block->getRating()?>%</span></span>
+        </div>
+    </div>
+    <div class="reviews-actions">
+        <?php echo __("(%1)",$block->getReviewCount())?>
+    </div>
+</div>
+
+<?php foreach($block->getReviewsCollection() as $_review):?>
+<?php $_rating = $_review->getRating()*100/5?>
+<div class="product-reviews-summary vendor-review">
+    <div class="vendor-review-avatar">
+        <img src="<?php echo $block->getViewFileUrl('Vnecoms_VendorsReview::images/default-avatar.png');?>" width="48" height="48" title="" alt=""/>
+    </div>
+    <div class="vendor-review-detail">
+        <?php $_reviewDetail = $_review->getReviewDetail();?>
+        <div class="review-title">
+            <?php echo $_reviewDetail->getTitle();?>
+        </div>
+        <div class="rating-summary">
+            <span class="label"><span><?php echo __("Rating:")?></span></span>
+            <div title="<?php echo $_rating?>%" class="rating-result">
+                <span style="width:<?php echo $_rating?>%"><span><?php echo $_rating?>%</span></span>
+            </div>
+        </div>
+        <div class="review-detail">
+            <?php echo $_reviewDetail->getDetail();?>
+        </div>
+        <div class="control vendor-review-item">
+            <?php $_product = $_review->getProduct();?>
+            <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product-item-photo">
+                <img src="<?php echo $block->getProductImageUrl($_product)?>" width="100" height="80" title="<?php echo $_product->getName()?>" alt="<?php echo $_product->getName()?>" />
+            </a>
+            <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product-name">
+                <?php echo $_product->getName(); ?>
+            </a>
+        </div>
+        <div class="customer-info"><?php echo __("Review by %1 on %2", sprintf('<strong>%s</strong>',$_reviewDetail->getNickname()), $block->formatDate($_reviewDetail->getCreatedAt(),\IntlDateFormatter::MEDIUM))?></div>
+    </div>
+</div>
+<?php endforeach;?>
+<?php $reviewSize = $block->getReviewsCollection()->getSize();?>
+<?php if(!$block->showAllReviews() && $reviewSize):?>
+<div class="view-all-items">
+    <a class="action primary" href="<?php echo $this->getViewAllItemsUrl();?>"><span><?php echo __("View All %1 Items",$reviewSize)?></span></a>
+</div>
+<?php else:?>
+    <?php echo $this->getPagerHtml();?>
+<?php endif;?>
